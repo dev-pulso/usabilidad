@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 620" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Marcador de flecha neutral -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <!-- Marcador de flecha roja para SE -->
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#be123c" />
+    </marker>
+    <!-- Sombra suave para nodos destacados -->
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 1. RAÍCES Y FUNDAMENTOS (CÚSPIDE SUPERIOR) -->
+  <!-- ========================================== -->
+  <g id="roots">
+    <!-- Elipse punteada superior -->
+    <ellipse cx="510" cy="55" rx="170" ry="42" fill="#f8fafc" stroke="#334155" stroke-width="2" stroke-dasharray="6,4" />
+    <text x="510" y="44" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">
+      <tspan font-style="italic">Boehm (1978)</tspan>
+      <tspan dx="18" font-style="italic" fill="#b45309">McCall (1977)</tspan>
+    </text>
+    <text x="510" y="68" text-anchor="middle" font-size="15" font-weight="800" fill="#0f172a" letter-spacing="0.5">
+      ISO/IEC 14598
+    </text>
+  </g>
+
+  <!-- LÍNEAS CONECTORAS PRINCIPALES DESDE LA RAÍZ -->
+  <!-- Conectores hacia HCI (Gris / Azul) -->
+  <line x1="450" y1="95" x2="105" y2="180" stroke="#64748b" stroke-width="1.6" />
+  <line x1="480" y1="97" x2="225" y2="180" stroke="#64748b" stroke-width="1.6" />
+  <line x1="500" y1="97" x2="335" y2="180" stroke="#64748b" stroke-width="1.6" />
+  <line x1="520" y1="97" x2="455" y2="180" stroke="#64748b" stroke-width="1.6" />
+
+  <!-- Conector prominente hacia SE (Rojo vino) -->
+  <line x1="560" y1="95" x2="775" y2="245" stroke="#be123c" stroke-width="2.5" />
+
+  <!-- ========================================== -->
+  <!-- 2. MACRO-BLOQUE IZQUIERDO: ENFOQUE HCI     -->
+  <!-- ========================================== -->
+  <g id="block-hci">
+    <!-- Contenedor Enfoque HCI (borde punteado gris/azul) -->
+    <rect x="25" y="130" width="510" height="465" rx="12" fill="#fafafa" stroke="#475569" stroke-width="2" stroke-dasharray="6,4" />
+    <text x="45" y="158" font-size="16" font-weight="800" font-style="italic" fill="#1e293b" letter-spacing="0.2">
+      Enfoque HCI
+    </text>
+
+    <!-- Nivel 1 de HCI: Shackel, Redish, Nielsen, Bevan -->
+    <!-- Shackel -->
+    <g transform="translate(60, 185)">
+      <rect x="0" y="0" width="90" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="45" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Shackel</text>
+      <text x="45" y="42" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">1991</text>
+    </g>
+
+    <!-- Redish -->
+    <g transform="translate(180, 185)">
+      <rect x="0" y="0" width="90" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="45" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Redish</text>
+      <text x="45" y="42" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">1993</text>
+    </g>
+
+    <!-- Nielsen -->
+    <g transform="translate(290, 185)">
+      <rect x="0" y="0" width="90" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="45" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Nielsen</text>
+      <text x="45" y="42" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">1993</text>
+    </g>
+
+    <!-- Enlace horizontal Nielsen - Bevan -->
+    <line x1="380" y1="211" x2="410" y2="211" stroke="#64748b" stroke-width="1.5" />
+
+    <!-- Bevan (MUSiC) -->
+    <g transform="translate(410, 185)">
+      <rect x="0" y="0" width="95" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="47" y="23" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Bevan</text>
+      <text x="47" y="41" text-anchor="middle" font-size="10.5" font-weight="500" fill="#64748b">MUSiC, 1995</text>
+    </g>
+
+    <!-- Conectores desde Nielsen hacia Preece y Shneiderman -->
+    <line x1="320" y1="237" x2="105" y2="305" stroke="#64748b" stroke-width="1.4" />
+    <line x1="345" y1="237" x2="235" y2="305" stroke="#64748b" stroke-width="1.4" />
+
+    <!-- Nivel 2: Preece, Shneiderman, ISO 9241-11 -->
+    <!-- Preece -->
+    <g transform="translate(60, 305)">
+      <rect x="0" y="0" width="90" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="45" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Preece</text>
+      <text x="45" y="42" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">1994</text>
+    </g>
+
+    <!-- Shneiderman -->
+    <g transform="translate(180, 305)">
+      <rect x="0" y="0" width="105" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="52" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Shneiderman</text>
+      <text x="52" y="42" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">2005</text>
+    </g>
+
+    <!-- Conector desde Bevan hacia ISO 9241-11 -->
+    <line x1="455" y1="237" x2="440" y2="300" stroke="#0284c7" stroke-width="1.8" />
+
+    <!-- ISO 9241-11 (Hito central de HCI) -->
+    <g transform="translate(370, 300)">
+      <rect x="0" y="0" width="135" height="58" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2" filter="url(#card-shadow)" />
+      <text x="67" y="26" text-anchor="middle" font-size="14" font-weight="900" fill="#1e40af">ISO 9241-11</text>
+      <text x="67" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#2563eb">1998</text>
+    </g>
+
+    <!-- Conectores desde ISO 9241-11 hacia modelos de tercer nivel -->
+    <line x1="400" y1="358" x2="85" y2="480" stroke="#64748b" stroke-width="1.4" />
+    <line x1="420" y1="358" x2="195" y2="480" stroke="#64748b" stroke-width="1.4" />
+    <line x1="437" y1="358" x2="295" y2="480" stroke="#64748b" stroke-width="1.4" />
+    <line x1="455" y1="358" x2="435" y2="480" stroke="#64748b" stroke-width="1.4" />
+    <line x1="475" y1="358" x2="575" y2="480" stroke="#64748b" stroke-width="1.4" />
+
+    <!-- Nivel 3 de HCI: Oztekin, Abran, Quesenbery, Seffah -->
+    <!-- Oztekin (UWIS) -->
+    <g transform="translate(45, 480)">
+      <rect x="0" y="0" width="85" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="42" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Oztekin</text>
+      <text x="42" y="41" text-anchor="middle" font-size="10" font-weight="500" fill="#64748b">UWIS, 2009</text>
+    </g>
+
+    <!-- Abran -->
+    <g transform="translate(150, 480)">
+      <rect x="0" y="0" width="85" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="42" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Abran</text>
+      <text x="42" y="41" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">2003</text>
+    </g>
+
+    <!-- Quesenbery -->
+    <g transform="translate(250, 480)">
+      <rect x="0" y="0" width="95" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="47" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Quesenbery</text>
+      <text x="47" y="41" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">2004</text>
+    </g>
+
+    <!-- Seffah (QUIM) - Puente HCI/SE -->
+    <g transform="translate(390, 480)">
+      <rect x="0" y="0" width="90" height="52" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" filter="url(#card-shadow)" />
+      <text x="45" y="23" text-anchor="middle" font-size="12.5" font-weight="800" fill="#1e40af">Seffah</text>
+      <text x="45" y="41" text-anchor="middle" font-size="10" font-weight="600" fill="#2563eb">QUIM, 2006</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 3. MACRO-BLOQUE DERECHO: ENFOQUE SE        -->
+  <!-- ========================================== -->
+  <g id="block-se">
+    <!-- Contenedor Enfoque SE (borde rojo sólido) -->
+    <rect x="545" y="130" width="455" height="465" rx="12" fill="#fff5f5" stroke="#be123c" stroke-width="2.5" />
+    <text x="565" y="158" font-size="16" font-weight="800" font-style="italic" fill="#be123c" letter-spacing="0.2">
+      Enfoque SE
+    </text>
+
+    <!-- ISO 9126-1 (Hito central de SE) -->
+    <g transform="translate(710, 245)">
+      <rect x="0" y="0" width="145" height="60" rx="8" fill="#fff1f2" stroke="#be123c" stroke-width="2" filter="url(#card-shadow)" />
+      <text x="72" y="26" text-anchor="middle" font-size="15" font-weight="900" fill="#9f1239">ISO 9126-1</text>
+      <text x="72" y="48" text-anchor="middle" font-size="13" font-weight="800" fill="#be123c">2001</text>
+    </g>
+
+    <!-- Conectores desde ISO 9126-1 hacia sus ramas -->
+    <line x1="740" y1="305" x2="455" y2="480" stroke="#be123c" stroke-width="1.4" stroke-dasharray="4,3" /> <!-- Puente a Seffah -->
+    <line x1="755" y1="305" x2="575" y2="480" stroke="#be123c" stroke-width="1.6" /> <!-- Hacia Rios -->
+    <line x1="770" y1="305" x2="660" y2="480" stroke="#be123c" stroke-width="1.6" /> <!-- Hacia Granollers -->
+    <line x1="785" y1="305" x2="755" y2="480" stroke="#be123c" stroke-width="1.6" /> <!-- Hacia Calero -->
+    <line x1="815" y1="305" x2="845" y2="480" stroke="#be123c" stroke-width="1.6" /> <!-- Hacia Ivory -->
+    <line x1="835" y1="305" x2="935" y2="480" stroke="#be123c" stroke-width="1.6" /> <!-- Hacia Olsina -->
+
+    <!-- Modelos derivados de SE -->
+    <!-- Rios (Conecta ISO 9241 e ISO 9126) -->
+    <g transform="translate(555, 480)">
+      <rect x="0" y="0" width="70" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="35" y="23" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Rios</text>
+      <text x="35" y="41" text-anchor="middle" font-size="11" font-weight="500" fill="#64748b">2010</text>
+    </g>
+
+    <!-- Granollers (MPIu+a) -->
+    <g transform="translate(635, 480)">
+      <rect x="0" y="0" width="85" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="42" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">Granollers</text>
+      <text x="42" y="40" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">MPIu+a, 2004</text>
+    </g>
+
+    <!-- Calero (WQM) -->
+    <g transform="translate(730, 480)">
+      <rect x="0" y="0" width="78" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="39" y="22" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f172a">Calero</text>
+      <text x="39" y="40" text-anchor="middle" font-size="9.5" font-weight="500" fill="#64748b">WQM, 2005</text>
+    </g>
+
+    <!-- Ivory (WebTango) -->
+    <g transform="translate(818, 480)">
+      <rect x="0" y="0" width="82" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="41" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Ivory</text>
+      <text x="41" y="40" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">WebTango, 2001</text>
+    </g>
+
+    <!-- Olsina (WebQEM) -->
+    <g transform="translate(910, 480)">
+      <rect x="0" y="0" width="80" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#card-shadow)" />
+      <text x="40" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">Olsina</text>
+      <text x="40" y="40" text-anchor="middle" font-size="9" font-weight="500" fill="#64748b">WebQEM, 2002</text>
+    </g>
+  </g>
+
+  <!-- Nota explicativa al pie -->
+  <text x="510" y="608" text-anchor="middle" font-size="10.5" fill="#64748b" font-weight="500">
+    Árbol genealógico de modelos de usabilidad basados en estándares clasificados por enfoque (HCI vs. SE) y cronología de autores.
+  </text>
+</svg>

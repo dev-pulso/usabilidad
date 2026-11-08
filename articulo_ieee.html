@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Árbol Genealógico de los Modelos de Usabilidad - Formato IEEE | UMB</title>
+  
+  <style>
+    /* ==========================================================================
+       PLANTILLA IEEE TRANSACTIONS / CONFERENCE PROCEEDINGS
+       Diseño formal de dos columnas acorde a normas y lineamientos IEEE
+       ========================================================================== */
+    @page {
+      size: letter;
+      margin: 1.9cm 1.5cm 1.9cm 1.5cm;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, Georgia, serif;
+      font-size: 10pt;
+      line-height: 1.25;
+      color: #000;
+      background: #e2e8f0;
+      padding: 2rem 1rem;
+    }
+
+    /* Barra flotante de utilidades para el estudiante (no se imprime) */
+    .print-toolbar {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      background: #1e293b;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      font-family: sans-serif;
+      font-size: 0.85rem;
+    }
+    .print-toolbar button, .print-toolbar a {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.15s ease;
+    }
+    .print-toolbar button:hover, .print-toolbar a:hover {
+      background: #1d4ed8;
+    }
+
+    /* Hoja de papel estilo artículo IEEE */
+    .paper-sheet {
+      max-width: 8.5in;
+      margin: 0 auto;
+      background: #fff;
+      padding: 0.75in;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      border-radius: 2px;
+    }
+
+    /* Encabezado del Paper (Ancho Completo) */
+    .paper-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1.2rem;
+    }
+
+    .paper-conference-header {
+      font-size: 8pt;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .paper-title {
+      font-size: 19pt;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .paper-subtitle {
+      font-size: 12pt;
+      font-style: italic;
+      color: #333;
+      margin-bottom: 1.25rem;
+    }
+
+    .author-block {
+      margin-bottom: 1.5rem;
+      font-size: 9.5pt;
+    }
+    .author-name {
+      font-size: 11pt;
+      font-weight: bold;
+    }
+    .author-dept {
+      color: #333;
+    }
+    .author-univ {
+      font-weight: 500;
+    }
+
+    /* Resumen y Palabras Clave (Ancho completo antes de las 2 columnas) */
+    .abstract-container {
+      margin: 0 auto 1.5rem auto;
+      max-width: 90%;
+      text-align: justify;
+      font-size: 9pt;
+      line-height: 1.35;
+    }
+    .abstract-title {
+      font-weight: bold;
+      font-style: italic;
+    }
+    .keywords-block {
+      margin-top: 0.5rem;
+      font-size: 9pt;
+      text-align: justify;
+    }
+    .keywords-title {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CONTENEDOR DE DOS COLUMNAS IEEE */
+    .two-columns {
+      column-count: 2;
+      column-gap: 0.25in;
+      column-rule: 0.5px solid #eaeaea;
+      text-align: justify;
+    }
+
+    /* Tipografía de Sección IEEE */
+    h2.section-ieee {
+      font-size: 10pt;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: normal;
+      font-variant: small-caps;
+      letter-spacing: 0.05em;
+      margin: 1.2rem 0 0.5rem 0;
+      break-after: avoid;
+    }
+    h2.section-ieee::before {
+      content: attr(data-roman) ". ";
+    }
+
+    h3.subsection-ieee {
+      font-size: 10pt;
+      font-style: italic;
+      font-weight: bold;
+      margin: 0.8rem 0 0.3rem 0;
+      break-after: avoid;
+    }
+
+    p {
+      text-indent: 1.2em;
+      margin-bottom: 0.4rem;
+      font-size: 9.5pt;
+      line-height: 1.3;
+    }
+
+    p.no-indent {
+      text-indent: 0;
+    }
+
+    /* Figuras formales estilo IEEE */
+    .ieee-figure {
+      column-span: all;
+      margin: 1.2rem auto;
+      text-align: center;
+      break-inside: avoid;
+    }
+    .ieee-figure img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    .ieee-figure figcaption {
+      font-size: 8.5pt;
+      margin-top: 0.5rem;
+      text-align: center;
+      line-height: 1.35;
+      color: #1e293b;
+    }
+    .ieee-figure figcaption strong {
+      font-weight: bold;
+    }
+
+    /* Tablas formales estilo IEEE (líneas horizontales en cabecera y pie) */
+    .table-container-full {
+      column-span: all;
+      margin: 1.5rem 0;
+    }
+
+    table.ieee-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8pt;
+      line-height: 1.25;
+      margin: 0.5rem 0;
+    }
+    table.ieee-table caption {
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    table.ieee-table th {
+      border-top: 1.5px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 5px 6px;
+      font-weight: bold;
+      text-align: left;
+      background: #fafafa;
+    }
+    table.ieee-table td {
+      padding: 4px 6px;
+      border-bottom: 0.5px solid #e0e0e0;
+      vertical-align: top;
+    }
+    table.ieee-table tr:last-child td {
+      border-bottom: 1.5px solid #000;
+    }
+
+    /* Ecuaciones IEEE */
+    .ieee-equation {
+      text-align: center;
+      margin: 0.6rem 0;
+      font-style: italic;
+      font-size: 9pt;
+      position: relative;
+    }
+    .ieee-equation span.eq-number {
+      float: right;
+      font-style: normal;
+    }
+
+    /* Referencias Bibliográficas */
+    .references-section {
+      font-size: 8pt;
+      line-height: 1.2;
+      text-align: justify;
+    }
+    .ref-item {
+      margin-bottom: 0.4rem;
+      text-indent: -1.5em;
+      margin-left: 1.5em;
+    }
+
+    /* Estilos específicos de impresión */
+    @media print {
+      body {
+        background: #fff !important;
+        padding: 0 !important;
+      }
+      .print-toolbar {
+        display: none !important;
+      }
+      .paper-sheet {
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .two-columns {
+        column-gap: 0.25in !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra flotante de acciones para el usuario -->
+  <div class="print-toolbar" role="region" aria-label="Controles del documento IEEE">
+    <span>Normas IEEE (2 Columnas)</span>
+    <button onclick="window.print()" title="Imprimir o guardar como PDF">
+      🖨️ Imprimir / Guardar como PDF
+    </button>
+    <a href="index.html" title="Regresar al sitio web">
+      🌐 Sitio Web
+    </a>
+  </div>
+
+  <div class="paper-sheet">
+    
+    <!-- ENCABEZADO FORMAL IEEE -->
+    <header class="paper-header">
+      <div class="paper-conference-header">
+        Universidad Manuela Beltrán — Facultad de Ingeniería — Arquitectura de Información y Usabilidad
+      </div>
+      <h1 class="paper-title">
+        Árbol Genealógico de los Modelos de Usabilidad: Análisis Taxonómico y Comparativo bajo los Enfoques de Interacción Humano-Computador (HCI) e Ingeniería de Software (SE)
+      </h1>
+      <div class="paper-subtitle">
+        Genealogical Tree of Usability Models: Taxonomic and Comparative Analysis under Human-Computer Interaction (HCI) and Software Engineering (SE) Approaches
+      </div>
+
+      <div class="author-block">
+        <div class="author-name">Estudiante de Ingeniería</div>
+        <div class="author-dept">Departamento de Tecnologías de la Información y la Comunicación</div>
+        <div class="author-univ">Universidad Manuela Beltrán (UMB) — Bogotá D.C., Colombia</div>
+        <div style="font-size: 8.5pt; color: #555; margin-top: 0.2rem;">Asignatura: Arquitectura de Información y Usabilidad • Actividad 3</div>
+      </div>
+
+      <!-- RESUMEN Y KEYWORDS -->
+      <div class="abstract-container">
+        <p class="no-indent">
+          <span class="abstract-title">Resumen—</span>Este artículo analiza la evolución de los modelos de usabilidad basados en estándares internacionales, examinando la relación entre los dos enfoques principales en ciencias de la computación: Interacción Humano-Computador (HCI) e Ingeniería de Software (SE). Con base en los modelos de calidad formulados por Barry Boehm, Jim McCall y el estándar ISO/IEC 14598, se desglosa el árbol genealógico compuesto por veinte marcos teóricos y normativos. En la vertiente HCI se revisan las propuestas de Shackel, Redish, Nielsen, Bevan (proyecto MUSiC), Preece, Shneiderman, la norma ISO 9241-11, y los modelos de Abran, Quesenbery, Seffah et al. (QUIM) y Oztekin et al. (UWIS). En la vertiente SE se estudia la norma ISO/IEC 9126-1 junto con los modelos de Rios, Granollers (MPIu+a), Calero et al. (WQM), Ivory y Hearst (WebTango) y Olsina et al. (WebQEM). Se incluye una tabla comparativa con las dimensiones, métricas, aportes y limitaciones de cada modelo, y se discute su convergencia en la serie de normas ISO/IEC 25010 (SQuaRE).
+        </p>
+        <p class="no-indent keywords-block">
+          <span class="keywords-title">Palabras Clave—</span>Usabilidad, Ingeniería de Usabilidad, Interacción Humano-Computador (HCI), Ingeniería de Software (SE), ISO 9241-11, ISO/IEC 9126-1, ISO/IEC 25010, Modelos de Calidad, Diseño Centrado en el Usuario.
+        </p>
+      </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL DEL ARTÍCULO A DOS COLUMNAS -->
+    <main class="two-columns">
+
+      <!-- SECCIÓN I -->
+      <h2 class="section-ieee" data-roman="I">Introducción</h2>
+      <p>
+        Durante las últimas décadas, el desarrollo de sistemas interactivos pasó de centrarse exclusivamente en la capacidad de cómputo y la corrección algorítmica a priorizar el desempeño de los usuarios finales [1]. En este contexto, la usabilidad se consolidó como un factor determinante para evaluar si una aplicación permite a las personas cumplir sus tareas con efectividad y satisfacción [2].
+      </p>
+      <p>
+        La definición y medición de la usabilidad se desarrolló principalmente a través de dos comunidades con objetivos y métodos distintos:
+      </p>
+      <p>
+        1) <em>Interacción Humano-Computador (HCI):</em> Basada en la psicología cognitiva, la ergonomía y los estudios de interacción, analiza los modelos mentales del usuario, la carga de trabajo, las tareas concretas y el contexto de uso [3], [4].
+      </p>
+      <p>
+        2) <em>Ingeniería de Software (SE):</em> Centrada en el ciclo de vida del producto, la especificación de requerimientos y el control de calidad, trata la usabilidad como una característica del software que puede descomponerse en métricas internas y externas verificables [5], [6].
+      </p>
+      <p>
+        Este trabajo describe el árbol genealógico de los modelos de usabilidad estructurados a partir de estándares internacionales. Se explican los antecedentes conceptuales, los autores y normas que integran cada enfoque, sus relaciones directas y su integración en los modelos actuales de calidad.
+      </p>
+
+      <!-- SECCIÓN II -->
+      <h2 class="section-ieee" data-roman="II">Raíces y Fundamentos de la Calidad del Software</h2>
+      <p>
+        En el origen del árbol genealógico coinciden tres propuestas que definieron la descomposición jerárquica de la calidad en factores, criterios y métricas:
+      </p>
+
+      <figure class="ieee-figure">
+        <img src="arbol_genealogico_usabilidad.svg" alt="Fig. 1. Árbol genealógico de modelos de usabilidad basados en estándares clasificados por enfoque (HCI vs. SE) y cronología de autores" />
+        <figcaption>
+          <strong>Fig. 1.</strong> Árbol genealógico de modelos de usabilidad basados en estándares clasificados por enfoque (HCI vs. SE) y cronología de autores (1977-2010).
+        </figcaption>
+      </figure>
+
+      <h3 class="subsection-ieee">A. Modelo de McCall, Richards y Walters (1977)</h3>
+      <p>
+        El modelo desarrollado por McCall et al. [7] para la Fuerza Aérea de los Estados Unidos organizó la calidad del software en tres niveles: factores (perspectiva de quien usa o adquiere el sistema), criterios (visión técnica del equipo de desarrollo) y métricas cuantitativas.
+      </p>
+      <p>
+        La calidad se dividió en tres perspectivas operativas: <em>Operación del producto</em>, <em>Revisión del producto</em> y <em>Transición del producto</em>. Dentro de la operación del producto, McCall definió la usabilidad como el esfuerzo necesario para aprender a operar el sistema, preparar los datos de entrada e interpretar los resultados [7]. Su principal limitación fue evaluar este factor a partir de estimaciones de los propios programadores, sin involucrar pruebas con usuarios reales.
+      </p>
+
+      <h3 class="subsection-ieee">B. Modelo Jerárquico de Barry Boehm (1978)</h3>
+      <p>
+        Barry Boehm [8] planteó un modelo jerárquico dividido en características de alto nivel, nivel intermedio y características primitivas. En la utilidad directa (<em>as-is utility</em>) se ubicó la usabilidad, asociada con la confiabilidad y la claridad de operación. Boehm señaló que un programa sin defectos técnicos pierde utilidad práctica si los operadores cometen errores reiterados al utilizarlo.
+      </p>
+
+      <h3 class="subsection-ieee">C. Estándar ISO/IEC 14598 (1999-2001)</h3>
+      <p>
+        A partir de los modelos de McCall y Boehm, la Organización Internacional de Normalización elaboró la norma ISO/IEC 14598 [9] en seis partes: visión general, planificación y gestión, proceso para desarrolladores, proceso para compradores, proceso para evaluadores y módulos de evaluación. El papel de esta norma en la genealogía fue fijar el procedimiento para medir y evaluar las características de calidad que la norma complementaria ISO/IEC 9126 se encargó de definir conceptualmente.
+      </p>
+
+      <!-- SECCIÓN III -->
+      <h2 class="section-ieee" data-roman="III">Enfoque HCI (Human-Computer Interaction)</h2>
+      <p>
+        La rama de HCI sostiene que la usabilidad se manifiesta durante la interacción entre la persona, el sistema y la tarea dentro de un entorno concreto, en lugar de residir como una propiedad estática del código.
+      </p>
+
+      <h3 class="subsection-ieee">A. Shackel (1991): Definición Operativa Cuantitativa</h3>
+      <p>
+        Brian Shackel [10] formuló una de las primeras definiciones verificables de usabilidad en ergonomía de software, estableciendo cuatro criterios mensurables:
+      </p>
+      <p>
+        1) <em>Efectividad:</em> Rendimiento en la tarea, expresado como porcentaje de éxito o margen de error frente a una meta prefijada.
+      </p>
+      <p>
+        2) <em>Aprendibilidad:</em> Tiempo y práctica requeridos para alcanzar un nivel de dominio operativo determinado.
+      </p>
+      <p>
+        3) <em>Flexibilidad:</em> Capacidad del sistema para responder a variaciones en las tareas o en las condiciones de uso.
+      </p>
+      <p>
+        4) <em>Actitud:</em> Satisfacción del usuario y ausencia de fatiga física o mental durante la sesión.
+      </p>
+
+      <h3 class="subsection-ieee">B. Redish (1993): Documentación y Tareas Reales</h3>
+      <p>
+        Janice Redish [11] vinculó la usabilidad con el diseño de información y la comunicación técnica. Mostró que los manuales, mensajes de error, etiquetas y microcopias forman parte de la interfaz. Su trabajo promovió pruebas iterativas con usuarios enfocadas en verificar si el lenguaje del sistema coincide con los conceptos que maneja el usuario.
+      </p>
+
+      <h3 class="subsection-ieee">C. Nielsen (1993): Modelo de Aceptabilidad del Sistema</h3>
+      <p>
+        Jakob Nielsen [2] estructuró la usabilidad dentro de la aceptabilidad práctica del sistema, distinguiendo entre <em>utilidad</em> (si el sistema tiene las funciones necesarias) y <em>usabilidad</em> (la facilidad con que los usuarios acceden a esas funciones).
+      </p>
+      <p>
+        Nielsen dividió la usabilidad en cinco atributos: <strong>Aprendibilidad</strong> (learnability), <strong>Eficiencia</strong> (efficiency), <strong>Memorabilidad</strong> (memorability), <strong>Tasa de errores</strong> (errors) y <strong>Satisfacción</strong> (satisfaction). Nielsen popularizó el método de evaluación heurística y observó que grupos de cinco usuarios en pruebas formativas identifican la mayoría de los problemas de usabilidad cualitativos.
+      </p>
+
+      <h3 class="subsection-ieee">D. Bevan y el Proyecto MUSiC (1995)</h3>
+      <p>
+        Nigel Bevan dirigió el proyecto europeo MUSiC (<em>Measuring Usability of Systems in Context</em>) [12] para crear métricas aplicables en situaciones reales de trabajo. El modelo midió rendimiento en la tarea, carga mental (mediante instrumentos como SMEQ y NASA-TLX) y satisfacción mediante cuestionarios estandarizados, sirviendo de base directa para redactar la norma ISO 9241-11.
+      </p>
+
+      <h3 class="subsection-ieee">E. Preece et al. (1994): Objetivos de Usabilidad y Experiencia de Usuario</h3>
+      <p>
+        Jenny Preece et al. [13] diferenciaron formalmente dos tipos de metas de diseño: objetivos de usabilidad (funcionales y cuantificables: efectividad, eficiencia, seguridad operacional y aprendibilidad) y objetivos de experiencia de usuario (subjetivos y afectivos: atractivo estético, entretenimiento y motivación).
+      </p>
+
+      <h3 class="subsection-ieee">F. Shneiderman (2005): Reglas de Diseño y Usabilidad Universal</h3>
+      <p>
+        Ben Shneiderman [14] formuló las ocho reglas de oro del diseño de interfaces: mantener la consistencia, ofrecer atajos a usuarios frecuentes, brindar retroalimentación clara, diseñar diálogos que marquen cierre, prevenir errores, permitir deshacer acciones con facilidad, apoyar el control interno del usuario y reducir la carga sobre la memoria de corto plazo. Planteó además el concepto de usabilidad universal para atender la diversidad de capacidades humanas, equipos y conexiones.
+      </p>
+
+      <h3 class="subsection-ieee">G. Estándar ISO 9241-11 (1998): Marco Central de HCI</h3>
+      <p>
+        La norma ISO 9241-11 [15] formalizó la definición estándar internacional: grado en que usuarios específicos pueden utilizar un producto para lograr metas específicas con efectividad, eficiencia y satisfacción en un contexto de uso determinado.
+      </p>
+      <div class="ieee-equation">
+        Usabilidad = f(Efectividad, Eficiencia, Satisfacción, Contexto) <span class="eq-number">(1)</span>
+      </div>
+      <p>
+        Donde la <strong>Efectividad</strong> mide la precisión y completitud con que se alcanzan los objetivos; la <strong>Eficiencia</strong> representa los recursos consumidos (tiempo, esfuerzo mental o costo) en relación con los resultados obtenidos; y la <strong>Satisfacción</strong> expresa el grado de confort y actitud positiva hacia el uso del sistema.
+      </p>
+
+      <h3 class="subsection-ieee">H. Abran et al. (2003): Modelo Consolidado</h3>
+      <p>
+        Alain Abran et al. [16] diseñaron un modelo unificado para articular las definiciones de la ISO 9241-11 y la ISO/IEC 9126, integrando efectividad, eficiencia y satisfacción con aprendibilidad y seguridad en la operación.
+      </p>
+
+      <h3 class="subsection-ieee">I. Quesenbery (2004): Las 5 Es</h3>
+      <p>
+        Whitney Quesenbery [17] sintetizó la usabilidad en cinco dimensiones de comunicación clara: <em>Eficaz</em> (effective), <em>Eficiente</em> (efficient), <em>Atractivo</em> (engaging), <em>Tolerante a errores</em> (error tolerant) y <em>Fácil de aprender</em> (easy to learn). Quesenbery mostró que la importancia relativa de cada dimensión cambia según el tipo de producto.
+      </p>
+
+      <h3 class="subsection-ieee">J. Seffah et al. (QUIM, 2006): Integración entre HCI e Ingeniería de Software</h3>
+      <p>
+        Ahmed Seffah et al. [18] desarrollaron el modelo QUIM (<em>Quality in Use Integrated Measurement</em>), estructurado en 10 factores de usabilidad, 26 subfactores y 127 métricas cuantitativas concretas, permitiendo a los equipos técnicos conectar decisiones de código y arquitectura con los resultados de usabilidad observados en los usuarios.
+      </p>
+
+      <h3 class="subsection-ieee">K. Oztekin et al. (UWIS, 2009): Sistemas Web de Información</h3>
+      <p>
+        Asim Oztekin et al. [19] crearon el marco UWIS empleando modelos de ecuaciones estructurales (SEM) para analizar sistemas web institucionales y portales complejos, demostrando la interdependencia entre calidad de contenidos, arquitectura de navegación, velocidad técnica y credibilidad visual.
+      </p>
+
+      <!-- SECCIÓN IV -->
+      <h2 class="section-ieee" data-roman="IV">Enfoque SE (Software Engineering)</h2>
+      <p>
+        La vertiente de Ingeniería de Software trata la usabilidad como una característica verificable del producto, vinculada a modelos de calidad, inspección de código y metodologías del ciclo de desarrollo.
+      </p>
+
+      <h3 class="subsection-ieee">A. Estándar ISO/IEC 9126-1 (2001)</h3>
+      <p>
+        La norma ISO/IEC 9126-1 [20] definió la calidad del producto de software a través de dos esquemas complementarios:
+      </p>
+      <p>
+        1) <em>Calidad interna y externa:</em> Dividida en funcionalidad, confiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad. La usabilidad comprende cinco subcaracterísticas: entendibilidad, aprendibilidad, operabilidad, atractivo y conformidad con estándares de usabilidad.
+      </p>
+      <p>
+        2) <em>Calidad en uso:</em> Resultado del producto al ejecutarse en un entorno de trabajo real, evaluada mediante efectividad, productividad, seguridad y satisfacción. Este modelo adoptó los conceptos ergonómicos de la norma ISO 9241-11.
+      </p>
+
+      <h3 class="subsection-ieee">B. Rios et al. (2010): Requisitos Formales de Usabilidad</h3>
+      <p>
+        Alba Ríos et al. [21] formularon un metamodelo para incorporar las normas ISO 9241-11 e ISO/IEC 9126 en la etapa de ingeniería de requisitos. El modelo traduce objetivos generales de usabilidad en criterios medibles asociados a casos de uso e historias de usuario.
+      </p>
+
+      <h3 class="subsection-ieee">C. Granollers (MPIu+a, 2004): Proceso Unificado</h3>
+      <p>
+        Toni Granollers [22] presentó el modelo de proceso MPIu+a para coordinar el trabajo entre desarrolladores e ingenieros de usabilidad. El marco articula el ciclo de desarrollo tradicional con actividades iterativas de evaluación formativa y diseño centrado en el usuario, integrando los requisitos de accesibilidad web (WCAG) desde las etapas tempranas de análisis arquitectónico.
+      </p>
+
+      <h3 class="subsection-ieee">D. Calero et al. (WQM, 2005): Modelo de Calidad Web</h3>
+      <p>
+        Coral Calero et al. [23] formularon el <em>Web Quality Model</em> (WQM) estructurado en tres dimensiones: características de calidad del producto (basadas en ISO/IEC 9126), particularidades del entorno web (contenido, navegación, presentación) y fases del ciclo de vida.
+      </p>
+
+      <h3 class="subsection-ieee">E. Ivory & Hearst (WebTango, 2001): Evaluación Automatizada</h3>
+      <p>
+        Melody Ivory y Marti Hearst [24] desarrollaron WebTango en la Universidad de California en Berkeley, prediciendo niveles de usabilidad mediante métricas cuantitativas extraídas del código HTML y hojas de estilo: densidad textual, distribución de imágenes, relación texto/enlaces y equilibrio visual de la plantilla.
+      </p>
+
+      <h3 class="subsection-ieee">F. Olsina et al. (WebQEM, 2002): Metodología de Evaluación Cuantitativa</h3>
+      <p>
+        Luis Olsina et al. [25] estructuraron la metodología WebQEM (<em>Web Quality Evaluation Methodology</em>), que organiza características y subcaracterísticas alineadas con ISO/IEC 9126. Mediante funciones de agregación lógica (LSP), el método consolida múltiples métricas individuales de páginas y menús en un índice porcentual comparable entre diferentes aplicaciones web.
+      </p>
+
+      <!-- TABLA COMPARATIVA A DOS COLUMNAS COMPLETAS -->
+      <div class="table-container-full">
+        <table class="ieee-table" aria-label="Tabla comparativa de modelos de usabilidad">
+          <caption>TABLA I: Síntesis Comparativa del Árbol Genealógico de Modelos de Usabilidad</caption>
+          <thead>
+            <tr>
+              <th>Modelo / Autor</th>
+              <th>Año</th>
+              <th>Enfoque</th>
+              <th>Dimensiones Clave</th>
+              <th>Aporte Principal</th>
+              <th>Limitación Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>McCall et al.</strong> [7]</td>
+              <td>1977</td>
+              <td>SE Raíz</td>
+              <td>Facilidad de uso, corrección, confiabilidad, eficiencia.</td>
+              <td>Primera estructura jerárquica: factores, criterios y métricas.</td>
+              <td>Medición dependiente del criterio de los programadores.</td>
+            </tr>
+            <tr>
+              <td><strong>Barry Boehm</strong> [8]</td>
+              <td>1978</td>
+              <td>SE Raíz</td>
+              <td>Utilidad directa, claridad de interfaz, robustez.</td>
+              <td>Destaca que el software sin facilidad operativa pierde valor práctico.</td>
+              <td>Métricas empíricas de usabilidad poco desarrolladas.</td>
+            </tr>
+            <tr>
+              <td><strong>ISO/IEC 14598</strong> [9]</td>
+              <td>1999</td>
+              <td>SE Raíz</td>
+              <td>Procesos para desarrolladores, adquirentes y evaluadores.</td>
+              <td>Procedimiento formal para conducir evaluaciones de software.</td>
+              <td>No define atributos de interfaz por sí misma, solo el proceso.</td>
+            </tr>
+            <tr>
+              <td><strong>Brian Shackel</strong> [10]</td>
+              <td>1991</td>
+              <td>HCI</td>
+              <td>Efectividad, aprendibilidad, flexibilidad y actitud.</td>
+              <td>Introduce criterios de aceptación cuantitativos y verificables.</td>
+              <td>Poca atención a factores estéticos o emocionales.</td>
+            </tr>
+            <tr>
+              <td><strong>Janice Redish</strong> [11]</td>
+              <td>1993</td>
+              <td>HCI</td>
+              <td>Orientación a tareas, claridad textual, microcopias.</td>
+              <td>Integra textos, etiquetas y mensajes como parte activa de la interfaz.</td>
+              <td>Enfoque concentrado en aspectos lingüísticos y documentales.</td>
+            </tr>
+            <tr>
+              <td><strong>Jakob Nielsen</strong> [2]</td>
+              <td>1993</td>
+              <td>HCI</td>
+              <td>Aprendibilidad, eficiencia, memorabilidad, errores, satisfacción.</td>
+              <td>Métodos de bajo costo: evaluación heurística y pruebas formativas.</td>
+              <td>Enfoque cualitativo; no precisa propiedades de arquitectura interna.</td>
+            </tr>
+            <tr>
+              <td><strong>Bevan (MUSiC)</strong> [12]</td>
+              <td>1995</td>
+              <td>HCI</td>
+              <td>Rendimiento en la tarea, esfuerzo mental (SMEQ), satisfacción.</td>
+              <td>Demuestra que la usabilidad debe evaluarse en contexto real.</td>
+              <td>Pruebas de laboratorio complejas de aplicar con recursos reducidos.</td>
+            </tr>
+            <tr>
+              <td><strong>Preece et al.</strong> [13]</td>
+              <td>1994</td>
+              <td>HCI</td>
+              <td>Metas de usabilidad vs. metas de experiencia de usuario.</td>
+              <td>Distingue aspectos productivos de dimensiones afectivas y hedónicas.</td>
+              <td>Dificultad para formular métricas exactas en variables emocionales.</td>
+            </tr>
+            <tr>
+              <td><strong>Ben Shneiderman</strong> [14]</td>
+              <td>2005</td>
+              <td>HCI</td>
+              <td>Ocho reglas de oro, usabilidad universal, velocidad de aprendizaje.</td>
+              <td>Guías directas de diseño para interfaces gráficas de usuario.</td>
+              <td>Reglas prescriptivas que requieren criterio experto para su adaptación.</td>
+            </tr>
+            <tr>
+              <td><strong>ISO 9241-11</strong> [15]</td>
+              <td>1998</td>
+              <td>HCI Estándar</td>
+              <td>Efectividad, eficiencia y satisfacción en contexto de uso.</td>
+              <td>Definición formal aceptada en la industria y la investigación internacional.</td>
+              <td>No describe los atributos del código que posibilitan esa usabilidad.</td>
+            </tr>
+            <tr>
+              <td><strong>Abran et al.</strong> [16]</td>
+              <td>2003</td>
+              <td>HCI / SE</td>
+              <td>Efectividad, eficiencia, satisfacción, aprendibilidad y seguridad.</td>
+              <td>Integra formalmente los marcos de ISO 9241 e ISO 9126.</td>
+              <td>Menor difusión industrial que los estándares ISO individuales.</td>
+            </tr>
+            <tr>
+              <td><strong>Quesenbery</strong> [17]</td>
+              <td>2004</td>
+              <td>HCI</td>
+              <td>Las 5 Es: eficaz, eficiente, atractivo, tolerante y aprendible.</td>
+              <td>Modelo pedagógico que permite balancear atributos según el dominio.</td>
+              <td>Marco conceptual sin formalización matemática de métricas.</td>
+            </tr>
+            <tr>
+              <td><strong>Seffah (QUIM)</strong> [18]</td>
+              <td>2006</td>
+              <td>HCI/SE Puente</td>
+              <td>10 factores, 26 subfactores y 127 métricas formales.</td>
+              <td>Taxonomía que vincula métricas de código con resultados en usuarios.</td>
+              <td>Complejidad técnica elevada para proyectos de desarrollo pequeños.</td>
+            </tr>
+            <tr>
+              <td><strong>Oztekin (UWIS)</strong> [19]</td>
+              <td>2009</td>
+              <td>HCI / Web</td>
+              <td>Contenido, navegación, rendimiento técnico y estética.</td>
+              <td>Empleo de ecuaciones estructurales para validar usabilidad web.</td>
+              <td>Orientado a portales y sistemas de información institucionales.</td>
+            </tr>
+            <tr>
+              <td><strong>ISO/IEC 9126-1</strong> [20]</td>
+              <td>2001</td>
+              <td>SE Estándar</td>
+              <td>Entendibilidad, aprendizaje, operabilidad, atractivo y calidad en uso.</td>
+              <td>Incorpora la usabilidad como pilar de la calidad del producto software.</td>
+              <td>Frontera ambigua entre calidad externa y calidad en uso.</td>
+            </tr>
+            <tr>
+              <td><strong>Rios et al.</strong> [21]</td>
+              <td>2010</td>
+              <td>SE / HCI</td>
+              <td>Requisitos de usabilidad mapeados en historias y casos de uso.</td>
+              <td>Formaliza la usabilidad en la fase de ingeniería de requerimientos.</td>
+              <td>Requiere analistas con formación combinada en ingeniería y UX.</td>
+            </tr>
+            <tr>
+              <td><strong>Granollers (MPIu+a)</strong> [22]</td>
+              <td>2004</td>
+              <td>SE / HCI</td>
+              <td>Ciclo de vida integrado con actividades de UX y accesibilidad.</td>
+              <td>Incorpora accesibilidad (WCAG) y usabilidad desde el análisis inicial.</td>
+              <td>Exige cambios en la organización de los equipos de desarrollo.</td>
+            </tr>
+            <tr>
+              <td><strong>Calero (WQM)</strong> [23]</td>
+              <td>2005</td>
+              <td>SE / Web</td>
+              <td>Calidad de producto web (ISO 9126), navegación, presentación.</td>
+              <td>Matriz tridimensional adaptada a hipertextos y portales web.</td>
+              <td>Requiere calibrar umbrales métricos según el tipo de sitio.</td>
+            </tr>
+            <tr>
+              <td><strong>Ivory (WebTango)</strong> [24]</td>
+              <td>2001</td>
+              <td>SE / Métricas</td>
+              <td>Métricas cuantitativas de código HTML/CSS, enlaces y texto.</td>
+              <td>Predicción automatizada de usabilidad web sin evaluadores manuales.</td>
+              <td>No identifica fallas de modelo mental ni frustración del usuario.</td>
+            </tr>
+            <tr>
+              <td><strong>Olsina (WebQEM)</strong> [25]</td>
+              <td>2002</td>
+              <td>SE / Web</td>
+              <td>Árbol jerárquico de características, agregación lógica (LSP).</td>
+              <td>Método repetible para auditorías y comparación cuantitativa web.</td>
+              <td>Demanda recolección intensiva de datos para calcular el índice global.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SECCIÓN V -->
+      <h2 class="section-ieee" data-roman="V">Convergencia en la Norma ISO/IEC 25010</h2>
+      <p>
+        Durante las décadas de 1990 y 2000, los enfoques HCI y SE mantuvieron diferencias operativas: mientras HCI priorizaba la observación directa de los usuarios y consideraba insuficientes las listas de verificación técnicas, SE buscaba métricas objetivas integradas en el código fuente.
+      </p>
+      <p>
+        Esta divergencia se resolvió con la serie de normas <strong>ISO/IEC 25000 (SQuaRE)</strong>, que sustituyó a las normas ISO/IEC 9126 e ISO/IEC 14598.
+      </p>
+      <p>
+        La norma <strong>ISO/IEC 25010</strong> [26] recogió las propuestas integradoras de modelos como QUIM (Seffah) y MPIu+a (Granollers), organizando la evaluación en dos modelos interrelacionados:
+      </p>
+      <p>
+        1) <em>Modelo de calidad del producto:</em> La usabilidad se define como una característica interna del sistema compuesta por seis subcaracterísticas: reconocibilidad de adecuación, aprendibilidad, operabilidad, protección contra errores del usuario, estética de la interfaz y <strong>accesibilidad</strong>. La inclusión explícita de la accesibilidad confirma que un producto no puede considerarse usable si excluye a personas con discapacidad.
+      </p>
+      <p>
+        2) <em>Modelo de calidad en uso:</em> Retoma el principio de la norma ISO 9241-11, evaluando el impacto del sistema mediante cinco dimensiones: <em>Efectividad</em>, <em>Eficiencia</em>, <em>Satisfacción</em>, <em>Libertad de riesgo</em> y <em>Cobertura de contexto</em>.
+      </p>
+      <p>
+        De esta forma, las especificaciones técnicas del software proporcionan la base operativa necesaria, mientras que la evaluación en contexto valida si el usuario alcanza sus metas con efectividad.
+      </p>
+
+      <!-- SECCIÓN VI -->
+      <h2 class="section-ieee" data-roman="VI">Conclusiones</h2>
+      <p>
+        1) <em>Complementariedad disciplinar:</em> Los enfoques HCI y SE representan facetas complementarias del desarrollo interactivo. La ingeniería de software aporta estructura en los requisitos y el ciclo de vida, mientras que la interacción humano-computador proporciona los métodos para verificar la experiencia y el desempeño humano.
+      </p>
+      <p>
+        2) <em>Normalización técnica:</em> Los estándares internacionales transformaron nociones generales sobre facilidad de uso en criterios medibles de efectividad, eficiencia y satisfacción.
+      </p>
+      <p>
+        3) <em>Modelos integradores:</em> Trabajos como QUIM (Seffah et al.) y MPIu+a (Granollers) demostraron que la usabilidad y la accesibilidad deben incorporarse desde el diseño de la arquitectura y mantenerse durante todo el ciclo de vida.
+      </p>
+      <p>
+        4) <em>Relevancia profesional:</em> En el marco de las normas actuales (ISO/IEC 25010 e ISO 9241-210), la usabilidad constituye un criterio técnico indispensable para garantizar la adopción, accesibilidad y sostenibilidad operativa de los sistemas interactivos.
+      </p>
+
+      <!-- REFERENCIAS FORMALES IEEE -->
+      <h2 class="section-ieee" data-roman="VII">Referencias</h2>
+      <div class="references-section">
+        <div class="ref-item">[1] D. A. Norman, <em>The Design of Everyday Things: Revised and Expanded Edition</em>. New York, NY: Basic Books, 2013.</div>
+        <div class="ref-item">[2] J. Nielsen, <em>Usability Engineering</em>. San Francisco, CA, USA: Morgan Kaufmann Publishers, 1993.</div>
+        <div class="ref-item">[3] J. M. Carroll, <em>HCI Models, Theories, and Frameworks: Toward a Multidisciplinary Science</em>. San Francisco, CA: Morgan Kaufmann, 2003.</div>
+        <div class="ref-item">[4] D. J. Mayhew, <em>The Usability Engineering Lifecycle: A Practitioner's Handbook for User Interface Design</em>. San Francisco, CA: Morgan Kaufmann, 1999.</div>
+        <div class="ref-item">[5] I. Sommerville, <em>Software Engineering</em>, 10th ed. Boston, MA: Pearson, 2015.</div>
+        <div class="ref-item">[6] R. S. Pressman and B. R. Maxim, <em>Software Engineering: A Practitioner's Approach</em>, 8th ed. New York: McGraw-Hill Education, 2014.</div>
+        <div class="ref-item">[7] J. A. McCall, P. K. Richards, and G. F. Walters, "Factors in Software Quality," US Rome Air Development Center Reports, NTIS AD/A-049-014, 1977.</div>
+        <div class="ref-item">[8] B. W. Boehm, J. R. Brown, H. Kaspar, M. Lipow, G. J. MacLeod, and M. J. Merritt, <em>Characteristics of Software Quality</em>. Amsterdam: North-Holland, 1978.</div>
+        <div class="ref-item">[9] International Organization for Standardization, <em>Information technology — Software product evaluation — Parts 1 to 6</em>, ISO/IEC Standard 14598, 1999–2001.</div>
+        <div class="ref-item">[10] B. Shackel, "Usability - Context, framework, definition and design," in <em>Human Factors for Informatics Usability</em>, B. Shackel and S. Richardson, Eds. Cambridge: Cambridge University Press, 1991, pp. 21–37.</div>
+        <div class="ref-item">[11] J. Redish, "Understanding readers," in <em>Techniques for Technical Communicators</em>, C. M. Barnum and S. Carliner, Eds. New York: Macmillan, 1993, pp. 14–41.</div>
+        <div class="ref-item">[12] N. Bevan, "Measuring usability as quality of use," <em>Software Quality Journal</em>, vol. 4, no. 2, pp. 115–130, 1995.</div>
+        <div class="ref-item">[13] J. Preece, Y. Rogers, H. Sharp, D. Benyon, S. Holland, and T. Carey, <em>Human-Computer Interaction</em>. Wokingham: Addison-Wesley, 1994.</div>
+        <div class="ref-item">[14] B. Shneiderman and C. Plaisant, <em>Designing the User Interface: Strategies for Effective Human-Computer Interaction</em>, 4th ed. Boston: Addison-Wesley, 2005.</div>
+        <div class="ref-item">[15] International Organization for Standardization, <em>Ergonomic requirements for office work with visual display terminals — Part 11: Guidance on usability</em>, ISO Standard 9241-11:1998, 1998.</div>
+        <div class="ref-item">[16] A. Abran, A. Khelifi, W. Suryn, and A. Seffah, "Consolidating the ISO usability models," in <em>Proc. 11th IEEE Int. Software Metrics Symp. (METRICS'03)</em>, 2003, pp. 1–10.</div>
+        <div class="ref-item">[17] W. Quesenbery, "The five dimensions of usability," in <em>Content and Complexity: Information Design in Technical Communication</em>. Mahwah, NJ: Lawrence Erlbaum, 2003, pp. 75–102.</div>
+        <div class="ref-item">[18] A. Seffah, M. Donyaee, R. B. Kline, and H. K. Padda, "Usability measurement and metrics: A consolidated model," <em>Software Quality Journal</em>, vol. 14, no. 2, pp. 159–178, 2006.</div>
+        <div class="ref-item">[19] A. Oztekin, D. Delen, A. Turkyilmaz, and S. Zaim, "A machine learning-based usability evaluation method for Web-based information systems," <em>Decision Support Systems</em>, vol. 56, pp. 63–73, 2013.</div>
+        <div class="ref-item">[20] International Organization for Standardization, <em>Software engineering — Product quality — Part 1: Quality model</em>, ISO/IEC Standard 9126-1:2001, 2001.</div>
+        <div class="ref-item">[21] A. Rios, X. Ferré, D. Juristo, and N. Moreno, "Integration of usability into requirements engineering: A framework based on standards," in <em>Proc. 8th Int. Conf. on Software Engineering Advances (ICSEA)</em>, 2013, pp. 211–217.</div>
+        <div class="ref-item">[22] T. Granollers, "MPIu+a. Modelo de proceso de la ingeniería de la usabilidad y de la accesibilidad," Tesis Doctoral, Dept. Informàtica i Enginyeria Industrial, Universitat de Lleida, España, 2004.</div>
+        <div class="ref-item">[23] C. Calero, J. Ruiz, and M. Piattini, "A Web quality model (WQM)," <em>Information and Software Technology</em>, vol. 47, no. 13, pp. 859–873, 2005.</div>
+        <div class="ref-item">[24] M. Y. Ivory and M. A. Hearst, "Improving Web site design: An empirical approach," in <em>Proc. SIGCHI Conf. on Human Factors in Computing Systems (CHI '01)</em>, Seattle, WA, 2001, pp. 294–301.</div>
+        <div class="ref-item">[25] L. Olsina and G. Rossi, "Measuring Web application quality with WebQEM," <em>IEEE Multimedia</em>, vol. 9, no. 4, pp. 20–29, Oct.–Dec. 2002.</div>
+        <div class="ref-item">[26] International Organization for Standardization, <em>Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model</em>, ISO/IEC Standard 25010:2011, 2011.</div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

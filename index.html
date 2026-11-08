@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal de Usabilidad, Accesibilidad y Diseño Centrado en el Usuario. Arquitectura de Información - UMB.">
+  <meta name="author" content="Arquitectura de Información y Usabilidad - UMB">
+  <title>Usabilidad y Diseño Centrado en el Usuario | UMB</title>
+  
+  <!-- CDN Oficial de Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Estilos con Sistema de Diseño Apple -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Enlace accesible de salto -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Barra de progreso de lectura superior -->
+  <div class="reading-progress-bar" id="readingProgressBar" role="progressbar" aria-label="Progreso de lectura"></div>
+
+  <!-- Barra de Navegación Global Apple (Frosted Glass - Sin quiebres de texto) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand" aria-label="Inicio - Usabilidad UMB">
+        <div class="brand-icon" aria-hidden="true">U</div>
+        <div class="brand-text">
+          <span class="brand-title">Usabilidad & DCU</span>
+          <span class="brand-sub">Arquitectura de Información • UMB</span>
+        </div>
+      </a>
+
+      <!-- Navegación con etiquetas limpias y sin quiebres de texto -->
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#nociones-basicas" class="nav-link">Nociones</a></li>
+          <li><a href="#usabilidad-accesibilidad" class="nav-link">Accesibilidad</a></li>
+          <li><a href="#ingenieria-usabilidad" class="nav-link">Ingeniería</a></li>
+          <li><a href="#ciclo-de-vida" class="nav-link">Ciclo de Vida</a></li>
+          <li><a href="#metodos-evaluacion" class="nav-link">Métodos</a></li>
+          <li><a href="#dcu" class="nav-link">DCU</a></li>
+          <li><a href="#arbol-genealogico" class="nav-link">Modelos</a></li>
+          <li><a href="#referencias" class="nav-link">Bibliografía</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Control accesible de alto contraste con icono Lucide -->
+        <button type="button" class="acc-nav-btn" id="btnHighContrast" title="Alternar modo de alto contraste" aria-pressed="false">
+          <i data-lucide="contrast"></i>
+          <span>Contraste</span>
+        </button>
+
+        <!-- Toggle de tema claro / oscuro con icono Lucide -->
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Cambiar tema de color" title="Alternar modo oscuro/claro">
+          <i data-lucide="moon" id="themeIcon"></i>
+        </button>
+
+        <!-- Enlace al Paper IEEE -->
+        <a href="articulo_ieee.html" target="_blank" class="btn-paper" title="Ver documento en formato IEEE">
+          <i data-lucide="file-text"></i>
+          <span>Paper IEEE</span>
+        </a>
+
+        <!-- Botón menú móvil -->
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menú de navegación" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION ESTILO APPLE -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <span class="eyebrow-tag">Actividad 3 • Universidad Manuela Beltrán</span>
+      <h1 id="hero-title" class="hero-title">
+        Usabilidad y Diseño Centrado en el Usuario.
+      </h1>
+      <p class="hero-lead">
+        Fundamentos teóricos, ciclos de ingeniería, métodos de evaluación y la genealogía de estándares internacionales que sustentan la interacción humano-computador.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="#nociones-basicas" class="btn-primary">
+          <i data-lucide="arrow-down"></i>
+          <span>Explorar Temas</span>
+        </a>
+        <a href="articulo_ieee.html" target="_blank" class="btn-secondary">
+          <span>Leer Paper IEEE (Parte 2)</span>
+          <i data-lucide="chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Bento Grid de Métricas en el Hero -->
+      <div class="hero-bento-grid" role="region" aria-label="Métricas de usabilidad">
+        <div class="bento-metric-card">
+          <div class="bento-metric-num">88%</div>
+          <div class="bento-metric-desc">de los usuarios no regresan a un sitio web tras una experiencia de navegación deficiente.</div>
+        </div>
+        <div class="bento-metric-card">
+          <div class="bento-metric-num">10x</div>
+          <div class="bento-metric-desc">menor costo al solucionar problemas en fase de diseño frente a la etapa post-lanzamiento.</div>
+        </div>
+        <div class="bento-metric-card">
+          <div class="bento-metric-num">68 pts</div>
+          <div class="bento-metric-desc">Puntaje promedio global en la escala estandarizada SUS (System Usability Scale).</div>
+        </div>
+        <div class="bento-metric-card">
+          <div class="bento-metric-num">5 tests</div>
+          <div class="bento-metric-desc">evaluadores bastan para identificar la mayoría de las barreras cualitativas (Nielsen, 1993).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buscador Apple Pill con icono Lucide -->
+  <div class="container">
+    <div class="search-wrapper">
+      <span class="search-icon" aria-hidden="true">
+        <i data-lucide="search"></i>
+      </span>
+      <input type="search" id="searchInput" class="search-input-box" placeholder="Buscar por concepto, método o estándar (ej. Nielsen, SUS, Heurísticas, ISO 9241, WCAG)..." aria-label="Buscar en la página">
+    </div>
+  </div>
+
+  <!-- CONTENEDOR EDITORIAL CENTRADO (Sin barra lateral) -->
+  <main id="main-content" class="main-layout">
+    <div class="content-area">
+
+      <!-- SECCIÓN 1: NOCIONES BÁSICAS -->
+      <section id="nociones-basicas" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Fundamentos</span>
+          <h2 class="section-title">Usabilidad: Nociones Básicas para Profesionales de la Información</h2>
+          <p class="section-subtitle">Definición operativa, dimensiones de calidad y el rol de las ciencias de la información.</p>
+        </header>
+
+        <p>
+          En los entornos digitales contemporáneos, la <strong>usabilidad</strong> determina el grado en que las personas pueden utilizar un sistema para cumplir sus propósitos con eficacia, eficiencia y agrado.
+        </p>
+
+        <div class="callout">
+          <div class="callout-title">
+            <i data-lucide="check-circle-2"></i>
+            <span>Definición Estándar (ISO 9241-11)</span>
+          </div>
+          <p>
+            <em>"Grado en el que un producto puede ser utilizado por usuarios específicos para lograr objetivos específicos con <strong>efectividad</strong>, <strong>eficiencia</strong> y <strong>satisfacción</strong> en un contexto de uso determinado."</em>
+          </p>
+        </div>
+
+        <p>
+          Jakob Nielsen (1993) organizó este concepto en cinco atributos fundamentales:
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3 class="feature-title">Aprendibilidad</h3>
+            <p class="feature-desc">Facilidad con que los usuarios novatos logran realizar tareas elementales en su primer contacto con el sistema.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="gauge"></i>
+            </div>
+            <h3 class="feature-title">Eficiencia</h3>
+            <p class="feature-desc">Rapidez y fluidez con que usuarios experimentados completan sus actividades una vez dominada la interfaz.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="brain"></i>
+            </div>
+            <h3 class="feature-title">Memorabilidad</h3>
+            <p class="feature-desc">Capacidad para recordar la operativa básica tras periodos prolongados sin utilizar la herramienta.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3 class="feature-title">Manejo de Errores</h3>
+            <p class="feature-desc">Baja incidencia de fallas, claridad en los mensajes de advertencia y facilidad para recuperar el estado previo.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h3 class="feature-title">Satisfacción</h3>
+            <p class="feature-desc">Comodidad y agrado percibido por el usuario durante y al finalizar la interacción con el producto.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="search-check"></i>
+            </div>
+            <h3 class="feature-title">Encontrabilidad</h3>
+            <p class="feature-desc">Aporte de Peter Morville: propiedad que permite que la información sea localizada y descubierta sin esfuerzo.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 1.75rem; margin-bottom: 0.75rem;">Aporte de los Profesionales de la Información</h3>
+        <p>
+          Los bibliotecólogos, documentalistas y arquitectos de información aportan métodos sistemáticos para estructurar grandes volúmenes de datos:
+        </p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--color-ink-muted);">
+          <li><strong>Taxonomías y Ontologías:</strong> Clasifican y agrupan contenidos conforme a los modelos mentales de los usuarios.</li>
+          <li><strong>Sistemas de Etiquetado:</strong> Emplean un lenguaje comprensible y alineado con el vocabulario del público destinatario.</li>
+          <li><strong>Recuperación de Información:</strong> Configuran filtros facetados y motores de búsqueda que previenen la sobrecarga cognitiva.</li>
+        </ul>
+      </section>
+
+      <!-- SECCIÓN 2: USABILIDAD Y ACCESIBILIDAD -->
+      <section id="usabilidad-accesibilidad" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Diseño Inclusivo</span>
+          <h2 class="section-title">Usabilidad y Accesibilidad</h2>
+          <p class="section-subtitle">Diferencias conceptuales, complementariedad y principios POUR de las directrices WCAG.</p>
+        </header>
+
+        <p>
+          Aunque ambos conceptos apuntan a optimizar la experiencia interactiva, atienden enfoques complementarios:
+        </p>
+
+        <div class="table-responsive">
+          <table class="custom-table" aria-label="Comparativa entre Usabilidad y Accesibilidad">
+            <thead>
+              <tr>
+                <th>Dimensión</th>
+                <th>Usabilidad (UX)</th>
+                <th>Accesibilidad Web (a11y)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Objetivo Central</strong></td>
+                <td>Optimizar efectividad, eficiencia y satisfacción en contextos específicos.</td>
+                <td>Garantizar el acceso equitativo y la participación de personas con discapacidad.</td>
+              </tr>
+              <tr>
+                <td><strong>Población</strong></td>
+                <td>Usuarios representativos del público objetivo.</td>
+                <td>Universal: personas con limitaciones visuales, auditivas, motrices o cognitivas.</td>
+              </tr>
+              <tr>
+                <td><strong>Marco Técnico</strong></td>
+                <td>ISO 9241-11, ISO 9241-210, ISO/IEC 25010.</td>
+                <td>W3C / WAI WCAG 2.1 y 2.2 (Niveles A, AA, AAA).</td>
+              </tr>
+              <tr>
+                <td><strong>Relación</strong></td>
+                <td colspan="2">
+                  La accesibilidad garantiza que las personas puedan acceder y utilizar la interfaz; la usabilidad logra que esa interacción sea ágil y satisfactoria.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 1.75rem; margin-bottom: 1rem;">Los 4 Principios POUR (WCAG 2.1 / 2.2)</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="eye"></i>
+            </div>
+            <h4 class="feature-title">1. Perceptible</h4>
+            <p class="feature-desc">El contenido debe presentarse de modo que pueda captarse sensorialmente: textos alternativos en imágenes, subtítulos y contraste cromático adecuado.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="keyboard"></i>
+            </div>
+            <h4 class="feature-title">2. Operable</h4>
+            <p class="feature-desc">Todos los controles deben poder manejarse vía teclado, sin trampas de foco y ofreciendo tiempo suficiente para la lectura e interacción.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="lightbulb"></i>
+            </div>
+            <h4 class="feature-title">3. Comprensible</h4>
+            <p class="feature-desc">Los textos deben ser claros, la navegación predecible y los mensajes de error deben indicar la manera exacta de corregir la entrada.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="cpu"></i>
+            </div>
+            <h4 class="feature-title">4. Robusto</h4>
+            <p class="feature-desc">El código debe ser compatible con tecnologías de asistencia actuales y futuras (lectores de pantalla mediante HTML5 semántico y WAI-ARIA).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: INGENIERÍA DE USABILIDAD -->
+      <section id="ingenieria-usabilidad" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Métricas y Métodos</span>
+          <h2 class="section-title">Ingeniería de Usabilidad</h2>
+          <p class="section-subtitle">Especificación cuantitativa y verificación metódica de metas de desempeño.</p>
+        </header>
+
+        <p>
+          La <strong>Ingeniería de Usabilidad</strong> formula metas comprobables y cuantitativas durante el ciclo de vida del software, sustituyendo apreciaciones subjetivas por requerimientos formales de rendimiento.
+        </p>
+
+        <div class="callout">
+          <div class="callout-title">
+            <i data-lucide="bar-chart-2"></i>
+            <span>Matriz de Especificación de Usabilidad</span>
+          </div>
+          <p>
+            Herramienta formal donde se determinan antes de la fase de programación tres umbrales de desempeño: 
+            <strong>Nivel Peor Aceptable (Worst Case)</strong>, 
+            <strong>Nivel Meta Planificado (Planned Target)</strong> y 
+            <strong>Nivel Óptimo (Best Case)</strong>.
+          </p>
+        </div>
+
+        <h3 style="margin-top: 1.75rem; margin-bottom: 0.75rem;">Métricas de Desempeño Habituales</h3>
+        <div class="table-responsive">
+          <table class="custom-table" aria-label="Métricas de Ingeniería de Usabilidad">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th>Unidad de Medida</th>
+                <th>Objetivo de Medición</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tasa de Éxito en la Tarea</strong></td>
+                <td>Porcentaje (%) de tareas completadas</td>
+                <td>Efectividad operativa global del sistema.</td>
+              </tr>
+              <tr>
+                <td><strong>Tiempo en Tarea</strong></td>
+                <td>Segundos o minutos requeridos</td>
+                <td>Eficiencia del flujo de trabajo y economía de pasos.</td>
+              </tr>
+              <tr>
+                <td><strong>Tasa de Errores</strong></td>
+                <td>Número medio de fallas por intento</td>
+                <td>Claridad de la navegación y prevención de errores.</td>
+              </tr>
+              <tr>
+                <td><strong>Carga Mental (NASA-TLX)</strong></td>
+                <td>Escala estandarizada (0 a 100)</td>
+                <td>Exigencia cognitiva, esfuerzo y nivel de frustración.</td>
+              </tr>
+              <tr>
+                <td><strong>Escala de Usabilidad SUS</strong></td>
+                <td>Puntaje normalizado (0 a 100)</td>
+                <td>Satisfacción subjetiva global y aceptabilidad general.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: CICLO DE VIDA (Bento Grid Iterativo con iconos Lucide) -->
+      <section id="ciclo-de-vida" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Proceso Iterativo</span>
+          <h2 class="section-title">Ciclo de Vida de la Ingeniería de Usabilidad</h2>
+          <p class="section-subtitle">Modelos de Mayhew, Nielsen y Hartson & Pyla concebidos como un bucle continuo de aprendizaje.</p>
+        </header>
+
+        <div class="lifecycle-intro-banner">
+          <div class="cycle-badge-icon" aria-hidden="true">
+            <i data-lucide="refresh-cw"></i>
+          </div>
+          <div>
+            <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Naturaleza Cíclica e Iterativa</h4>
+            <p style="margin-bottom: 0; font-size: 0.88rem; color: var(--color-ink-muted);">
+              La ingeniería de usabilidad no es un proceso lineal ni una secuencia rígida de pasos; es un ciclo continuo donde las evaluaciones de cada prototipo alimentan de inmediato el siguiente refinamiento.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Grid de las Fases del Ciclo de Vida -->
+        <div class="lifecycle-bento-grid">
+          <div class="bento-card">
+            <div>
+              <span class="bento-phase-tag">Fase 1 • Investigación</span>
+              <h4>Análisis de Requisitos y Contexto</h4>
+              <p>Investigación sobre usuarios, sus modelos mentales y su entorno real de trabajo. Identifica barreras antes de diseñar.</p>
+            </div>
+            <span class="bento-deliverable-chip">Personas • User Journeys • Metas</span>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <span class="bento-phase-tag">Fase 2 • Estructura</span>
+              <h4>Diseño Conceptual y Arquitectura</h4>
+              <p>Organización semántica de la información: flujos de usuario, inventario de contenidos y taxonomías validadas con Card Sorting.</p>
+            </div>
+            <span class="bento-deliverable-chip">User Flows • Mapas de Sitio</span>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <span class="bento-phase-tag">Fase 3 • Creación</span>
+              <h4>Prototipado Rápido (Baja a Alta)</h4>
+              <p>Construcción progresiva de interfaces: desde wireframes estructurales hasta prototipos navegables en Figma o código HTML.</p>
+            </div>
+            <span class="bento-deliverable-chip">Wireframes • Design Systems</span>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <span class="bento-phase-tag">Fase 4 • Verificación</span>
+              <h4>Evaluación Formativa y Refinamiento</h4>
+              <p>Pruebas de usabilidad empíricas y evaluaciones heurísticas. Las dificultades detectadas se corrigen antes del desarrollo final.</p>
+            </div>
+            <span class="bento-deliverable-chip">Informes de Fricción • Severidad</span>
+          </div>
+
+          <div class="bento-card" style="grid-column: 1 / -1;">
+            <div>
+              <span class="bento-phase-tag">Fase 5 • Evolución Continua</span>
+              <h4>Evaluación Sumativa y Monitoreo en Producción</h4>
+              <p>Comprobación formal de las especificaciones métricas en producción mediante telemetría, embudos de conversión, analítica de navegación y encuestas SUS continuas.</p>
+            </div>
+            <span class="bento-deliverable-chip">Benchmarking SUS • Telemetría • Optimización Continua</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: MÉTODOS DE EVALUACIÓN -->
+      <section id="metodos-evaluacion" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Evaluación UX</span>
+          <h2 class="section-title">Métodos de Evaluación de Usabilidad</h2>
+          <p class="section-subtitle">Taxonomía metodológica: inspección por expertos, pruebas empíricas e indagación.</p>
+        </header>
+
+        <p>
+          Seleccionar el método adecuado depende del momento del proyecto, el perfil del equipo y los recursos disponibles:
+        </p>
+
+        <!-- Filtro Píldora Apple -->
+        <div class="filter-tabs" role="tablist" aria-label="Filtro de métodos">
+          <button type="button" class="filter-btn active" data-filter="all">Todos los Métodos</button>
+          <button type="button" class="filter-btn" data-filter="inspeccion">Inspección Experta</button>
+          <button type="button" class="filter-btn" data-filter="empirico">Pruebas con Usuarios</button>
+          <button type="button" class="filter-btn" data-filter="indagacion">Indagación y Encuestas</button>
+        </div>
+
+        <div class="methods-container">
+          <div class="method-card" data-category="inspeccion">
+            <div class="method-meta">
+              <span class="badge-sub">Inspección</span>
+              <span class="badge-sub">Fase Temprana</span>
+              <span class="badge-sub">Económico</span>
+            </div>
+            <h4>Evaluación Heurística (Jakob Nielsen, 1994)</h4>
+            <p>Especialistas revisan la interfaz cotejándola contra los diez principios heurísticos: visibilidad del estado del sistema, correspondencia con el mundo real, control y libertad, consistencia, prevención de errores, reconocimiento en vez de recuerdo, flexibilidad, estética limpia, diagnóstico de fallas y ayuda contextual.</p>
+          </div>
+
+          <div class="method-card" data-category="inspeccion">
+            <div class="method-meta">
+              <span class="badge-sub">Inspección</span>
+              <span class="badge-sub">Prototipos</span>
+              <span class="badge-sub">Usuarios Principiantes</span>
+            </div>
+            <h4>Recorrido Cognitivo (Cognitive Walkthrough)</h4>
+            <p>Los evaluadores analizan paso a paso las acciones requeridas para completar una tarea, preguntándose si el usuario formulará la intención correcta, identificará el control y reconocerá si avanzó hacia su meta.</p>
+          </div>
+
+          <div class="method-card" data-category="empirico">
+            <div class="method-meta">
+              <span class="badge-sub">Prueba con Usuario</span>
+              <span class="badge-sub">Cualitativo</span>
+              <span class="badge-sub">Formativo</span>
+            </div>
+            <h4>Protocolo Pensar en Voz Alta (Think-Aloud)</h4>
+            <p>El participante verbaliza sus razonamientos, dudas y expectativas mientras ejecuta escenarios reales de uso, revelando sus modelos mentales y el motivo concreto de los errores.</p>
+          </div>
+
+          <div class="method-card" data-category="empirico">
+            <div class="method-meta">
+              <span class="badge-sub">Prueba con Usuario</span>
+              <span class="badge-sub">Biométrico</span>
+              <span class="badge-sub">Mapas de Calor</span>
+            </div>
+            <h4>Seguimiento Ocular (Eye Tracking)</h4>
+            <p>Dispositivos de registro visual detectan fijaciones y movimientos sacádicos, generando mapas de calor que identifican cómo se escanean los bloques de contenido (como el patrón de lectura en F).</p>
+          </div>
+
+          <div class="method-card" data-category="indagacion">
+            <div class="method-meta">
+              <span class="badge-sub">Indagación</span>
+              <span class="badge-sub">Estandarizado</span>
+              <span class="badge-sub">John Brooke (1986)</span>
+            </div>
+            <h4>System Usability Scale (SUS)</h4>
+            <p>Cuestionario de 10 afirmaciones en escala Likert que genera un índice compuesto de 0 a 100 de alta confiabilidad psicométrica, permitiendo comparar el producto con el estándar de la industria (68 puntos).</p>
+          </div>
+
+          <div class="method-card" data-category="indagacion">
+            <div class="method-meta">
+              <span class="badge-sub">Indagación</span>
+              <span class="badge-sub">Arquitectura de Información</span>
+              <span class="badge-sub">Modelos Mentales</span>
+            </div>
+            <h4>Card Sorting y Tree Testing</h4>
+            <p>Técnicas especializadas para organizar la información: el Card Sorting permite a los usuarios agrupar conceptos en categorías; el Tree Testing verifica si localizan elementos en menús textuales sin distractores visuales.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: WIDGET CALCULADORA SUS (Compacto con icono Lucide) -->
+      <section id="calculadora-sus" class="sus-compact-container" aria-labelledby="sus-title">
+        <div class="sus-header">
+          <span class="section-tag">Herramienta Interactiva</span>
+          <h3 id="sus-title">Calculadora de Usabilidad SUS</h3>
+          <p style="max-width: 600px; margin: 0 auto; color: var(--color-ink-muted); font-size: 0.92rem;">
+            Calcula el índice psicométrico estandarizado según la metodología de John Brooke (1986). Puedes desplegar el cuestionario interactivo para evaluar un sistema:
+          </p>
+          <button type="button" class="sus-toggle-btn" id="btnToggleSus" aria-expanded="false" aria-controls="susFormWrapper">
+            <i data-lucide="sliders-horizontal"></i>
+            <span id="susToggleText">Abrir Cuestionario SUS (10 preguntas)</span>
+            <i data-lucide="chevron-down" id="susToggleIcon"></i>
+          </button>
+        </div>
+
+        <div id="susFormWrapper" style="display: none;">
+          <form id="susForm" onsubmit="event.preventDefault();">
+            <div class="sus-questions-list">
+              <div class="sus-question-group">
+                <label class="sus-q-label">1. Creo que me gustaría utilizar este sistema con frecuencia.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q1" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q1" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q1" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q1" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q1" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">2. Encontré el sistema innecesariamente complejo.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q2" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q2" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q2" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q2" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q2" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">3. Pensé que el sistema era fácil de usar.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q3" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q3" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q3" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q3" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q3" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">4. Creo que necesitaría el apoyo de un técnico para poder utilizar este sistema.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q4" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q4" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q4" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q4" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q4" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">5. Encontré que las diversas funciones del sistema estaban bien integradas.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q5" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q5" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q5" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q5" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q5" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">6. Pensé que había demasiada inconsistencia en este sistema.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q6" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q6" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q6" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q6" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q6" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">7. Imagino que la mayoría de las personas aprenderían a usar este sistema muy rápidamente.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q7" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q7" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q7" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q7" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q7" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">8. Encontré el sistema muy engorroso de usar.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q8" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q8" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q8" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q8" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q8" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">9. Me sentí muy seguro utilizando el sistema.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q9" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q9" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q9" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q9" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q9" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+
+              <div class="sus-question-group">
+                <label class="sus-q-label">10. Necesité aprender muchas cosas antes de poder manejar este sistema.</label>
+                <div class="sus-scale-radios">
+                  <span>Muy en desacuerdo (1)</span>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q10" value="1"> 1</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q10" value="2"> 2</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q10" value="3"> 3</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q10" value="4"> 4</label>
+                  <label class="sus-radio-item"><input type="radio" name="sus_q10" value="5"> 5</label>
+                  <span>Totalmente de acuerdo (5)</span>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="sus-result-box" aria-live="polite">
+            <div class="sus-score-display" id="susScoreDisplay">--</div>
+            <div class="sus-grade-badge" id="susGradeDisplay">Completado: 0/10 preguntas</div>
+            <p id="susInterpDisplay" style="color: var(--color-ink-muted); margin-bottom: 0;">
+              Seleccione una calificación del 1 al 5 en cada afirmación para calcular el índice normalizado.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 7: DCU -->
+      <section id="dcu" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">ISO 9241-210</span>
+          <h2 class="section-title">Diseño Centrado en el Usuario (DCU / UCD)</h2>
+          <p class="section-subtitle">Filosofía de diseño y principios rectores de la norma internacional.</p>
+        </header>
+
+        <p>
+          El <strong>Diseño Centrado en el Usuario (DCU)</strong> sitúa las capacidades, tareas y limitaciones humanas en el núcleo de cada decisión de arquitectura y desarrollo.
+        </p>
+
+        <div class="callout">
+          <div class="callout-title">
+            <i data-lucide="award"></i>
+            <span>Los 6 Principios Rectores (ISO 9241-210)</span>
+          </div>
+          <ul style="margin-left: 1.25rem; margin-top: 0.5rem; color: var(--color-ink-muted);">
+            <li><strong>1. Comprensión explícita:</strong> El diseño se sustenta en el conocimiento detallado de usuarios, tareas y contextos reales.</li>
+            <li><strong>2. Participación activa:</strong> Se involucra a usuarios reales a lo largo de todo el proceso de creación.</li>
+            <li><strong>3. Evaluación impulsada por el usuario:</strong> Las revisiones y retroalimentaciones guían cada iteración del producto.</li>
+            <li><strong>4. Proceso iterativo:</strong> Refinamiento progresivo de la solución mediante ciclos continuos de diseño y prueba.</li>
+            <li><strong>5. Experiencia integral:</strong> Se atiende la totalidad de la interacción (funcional, ergonómica y afectiva).</li>
+            <li><strong>6. Equipo multidisciplinar:</strong> Concurrencia de ingenieros, diseñadores de interacción y especialistas en información.</li>
+          </ul>
+        </div>
+
+        <h3 style="margin-top: 1.75rem; margin-bottom: 1rem;">Artefactos Clave de Diseño</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="users"></i>
+            </div>
+            <h4 class="feature-title">User Personas</h4>
+            <p class="feature-desc">Arquetipos basados en datos empíricos que representan patrones de comportamiento y necesidades reales de los usuarios.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="map"></i>
+            </div>
+            <h4 class="feature-title">Customer Journey Maps</h4>
+            <p class="feature-desc">Esquemas cronológicos que trazan los puntos de contacto, expectativas y puntos de fricción a resolver durante el flujo de uso.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i data-lucide="layout"></i>
+            </div>
+            <h4 class="feature-title">Wireframes y Prototipos</h4>
+            <p class="feature-desc">Modelos de baja a alta fidelidad que permiten validar la distribución y jerarquía visual antes de codificar en producción.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 8: ÁRBOL GENEALÓGICO DE MODELOS -->
+      <section id="arbol-genealogico" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Genealogía de Estándares</span>
+          <h2 class="section-title">Árbol Genealógico de Modelos de Usabilidad</h2>
+          <p class="section-subtitle">Evolución de los enfoques de Interacción Humano-Computador (HCI) e Ingeniería de Software (SE).</p>
+        </header>
+
+        <p>
+          A partir de los modelos de calidad pioneros de <strong>Barry Boehm (1978)</strong> y <strong>McCall (1977)</strong>, junto con el estándar de evaluación <strong>ISO/IEC 14598</strong>, el estudio de la usabilidad se ramificó en dos vertientes:
+        </p>
+
+        <!-- Diagrama Gráfico del Árbol Genealógico -->
+        <figure style="margin: 1.5rem 0; text-align: center; background: var(--color-surface); padding: 1.25rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+          <img src="arbol_genealogico_usabilidad.svg" alt="Árbol genealógico de modelos de usabilidad" style="width: 100%; max-width: 900px; height: auto; border-radius: var(--radius-sm); display: block; margin: 0 auto;">
+          <figcaption style="font-size: 0.825rem; color: var(--color-ink-muted); margin-top: 0.85rem; font-weight: 500;">
+            Figura: Árbol genealógico de modelos de usabilidad basados en estándares clasificados por enfoque (HCI vs. SE) y cronología de autores (1977-2010).
+          </figcaption>
+        </figure>
+
+        <div class="genealogy-preview-box">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            <span class="eyebrow-tag">Raíces Precursoras</span>
+            <h3 style="font-size: 1.25rem;">Boehm (1978) • McCall (1977) • ISO/IEC 14598</h3>
+            <p style="font-size: 0.875rem; color: var(--color-ink-muted);">Estructuración jerárquica de la calidad de software y pautas de evaluación.</p>
+          </div>
+
+          <div class="tree-branches-grid">
+            <div class="tree-branch-card">
+              <div class="branch-title">
+                <i data-lucide="monitor"></i>
+                <span>Enfoque HCI (Human-Computer Interaction)</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-ink-muted);">
+                Centrado en la interacción humana, modelos mentales, carga cognitiva y desempeño en contexto real:
+              </p>
+              <div class="author-chip-list">
+                <span class="author-chip">Shackel (1991)</span>
+                <span class="author-chip">Redish (1993)</span>
+                <span class="author-chip">Nielsen (1993)</span>
+                <span class="author-chip">Bevan (MUSiC, 1995)</span>
+                <span class="author-chip">Preece (1994)</span>
+                <span class="author-chip">Shneiderman (2005)</span>
+                <span class="author-chip" style="background: var(--color-canvas); border-color: var(--color-primary); color: var(--color-primary); font-weight: 600;">ISO 9241-11 (1998)</span>
+                <span class="author-chip">Oztekin (UWIS, 2009)</span>
+                <span class="author-chip">Abran (2003)</span>
+                <span class="author-chip">Quesenbery (2004)</span>
+                <span class="author-chip" style="font-weight: 600;">Seffah (QUIM, 2006)</span>
+              </div>
+            </div>
+
+            <div class="tree-branch-card">
+              <div class="branch-title">
+                <i data-lucide="settings-2"></i>
+                <span>Enfoque SE (Software Engineering)</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--color-ink-muted);">
+                Centrado en la calidad del producto de software, métricas internas/externas y procesos de ciclo de vida:
+              </p>
+              <div class="author-chip-list">
+                <span class="author-chip" style="background: var(--color-canvas); border-color: #e11d48; color: #e11d48; font-weight: 600;">ISO 9126-1 (2001)</span>
+                <span class="author-chip">Rios (2010)</span>
+                <span class="author-chip">Granollers (MPIu+a, 2004)</span>
+                <span class="author-chip">Calero (WQM, 2005)</span>
+                <span class="author-chip">Ivory (WebTango, 2001)</span>
+                <span class="author-chip">Olsina (WebQEM, 2002)</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.75rem; text-align: center;">
+            <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--color-ink-muted);">
+              Para revisar la explicación pormenorizada de cada uno de los 20 modelos con normas IEEE:
+            </p>
+            <a href="articulo_ieee.html" target="_blank" class="btn-primary" style="font-size: 0.875rem;">
+              <i data-lucide="file-text"></i>
+              <span>Abrir Artículo Completo (Normas IEEE)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 9: REFERENCIAS -->
+      <section id="referencias" class="topic-section">
+        <header class="section-header">
+          <span class="section-tag">Bibliografía</span>
+          <h2 class="section-title">Referencias Bibliográficas</h2>
+          <p class="section-subtitle">Fuentes académicas y estándares internacionales consultados.</p>
+        </header>
+
+        <ol class="reference-list">
+          <li class="reference-item">
+            J. Nielsen, <em>Usability Engineering</em>. San Francisco, CA: Morgan Kaufmann, 1993.
+          </li>
+          <li class="reference-item">
+            International Organization for Standardization, <em>Ergonomics of human-system interaction — Part 11: Usability: Definitions and concepts</em>, ISO Standard 9241-11:2018, 2018.
+          </li>
+          <li class="reference-item">
+            International Organization for Standardization, <em>Human-centred design for interactive systems</em>, ISO Standard 9241-210:2019, 2019.
+          </li>
+          <li class="reference-item">
+            J. Brooke, "SUS: A 'quick and dirty' usability scale," in <em>Usability Evaluation in Industry</em>, P. W. Jordan et al., Eds. London: Taylor & Francis, 1996, pp. 189–194.
+          </li>
+          <li class="reference-item">
+            A. Bangor, P. T. Kortum, and J. T. Miller, "An empirical evaluation of the System Usability Scale," <em>Int. J. Human-Computer Interaction</em>, vol. 24, no. 6, pp. 574–594, 2008.
+          </li>
+          <li class="reference-item">
+            D. J. Mayhew, <em>The Usability Engineering Lifecycle: A Practitioner's Handbook for User Interface Design</em>. San Francisco, CA: Morgan Kaufmann, 1999.
+          </li>
+          <li class="reference-item">
+            P. Morville and L. Rosenfeld, <em>Information Architecture for the World Wide Web</em>, 3rd ed. Sebastopol, CA: O'Reilly Media, 2006.
+          </li>
+          <li class="reference-item">
+            W3C, "Web Content Accessibility Guidelines (WCAG) 2.1," W3C Recommendation, 2018. [Online]. Disponible: https://www.w3.org/TR/WCAG21/
+          </li>
+          <li class="reference-item">
+            A. Seffah, M. Donyaee, R. B. Kline, and H. K. Padda, "Usability measurement and metrics: A consolidated model," <em>Software Quality Journal</em>, vol. 14, no. 2, pp. 159–178, 2006.
+          </li>
+          <li class="reference-item">
+            T. Granollers, "MPIu+a. Modelo de proceso de la ingeniería de la usabilidad y de la accesibilidad," Tesis Doctoral, Universitat de Lleida, España, 2004.
+          </li>
+        </ol>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA APPLE (PARCHMENT FOOTER) -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 0.75rem;">
+          <div class="brand-icon" aria-hidden="true">U</div>
+          <span class="brand-title">Usabilidad & DCU</span>
+        </div>
+        <p class="footer-desc">
+          Portal académico desarrollado para la Actividad 3 de Arquitectura de Información y Usabilidad. Diseñado bajo principios de usabilidad, semántica web y accesibilidad universal WCAG 2.1.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Módulos Temáticos</h5>
+        <ul class="footer-links">
+          <li><a href="#nociones-basicas">Nociones Básicas</a></li>
+          <li><a href="#usabilidad-accesibilidad">Accesibilidad</a></li>
+          <li><a href="#ingenieria-usabilidad">Ingeniería UX</a></li>
+          <li><a href="#ciclo-de-vida">Ciclo de Vida</a></li>
+          <li><a href="#metodos-evaluacion">Métodos</a></li>
+          <li><a href="#dcu">Diseño Centrado en Usuario</a></li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <div class="container footer-bottom">
+      <span>Universidad Manuela Beltrán — Arquitectura de Información y Usabilidad</span>
+      <span>Licencia Académica Abierta • 2026</span>
+    </div>
+  </footer>
+
+  <!-- Script interactivo -->
+  <script src="script.js"></script>
+  <!-- Inicialización inmediata de Lucide Icons -->
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
